@@ -1,0 +1,11 @@
+namespace: kitware
+description: this namespace is for Kitware open source projects
+homepage_url: https://gitlab.kitware.com/
+vcs_url: https://gitlab.kitware.com/
+license: BSD-3-Clause
+contact:
+    - type: person
+      name: Bill Hoffman
+      role: maintainer
+      email: bill@example.com
+ 

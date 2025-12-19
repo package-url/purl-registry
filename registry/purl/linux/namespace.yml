@@ -1,0 +1,12 @@
+namespace: kernel
+description: this namespace is for all the kernel projects, including the linux kernel proper
+homepage_url: https://www.kernel.org/
+vcs_url: https://git.kernel.org/
+download_url: https://www.kernel.org/pub/
+license: GPL-2.0-only WITH Linux-syscall-notes
+contact:
+    - type: person
+      name: Greg Kroah-Hartman
+      role: maintainer
+      email: greg@example.com
+ 

@@ -1,0 +1,10 @@
+namespace: openssl
+description: this namespace is for all the OpenSSL projects
+homepage_url: https://www.OpenSSL.org/
+license: Apache-2.0
+contact:
+    - type: person
+      name: Oscar Pensol
+      role: maintainer
+      email: oscar@exmaple.com
+ 

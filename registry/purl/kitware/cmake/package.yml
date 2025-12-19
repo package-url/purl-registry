@@ -1,0 +1,25 @@
+namespace: kitware
+
+# NOTE: this could be the same as the CPS name, though what about the namespace part?
+name: cmake
+
+description: CMake is a cross-platform, open-source build system generator.
+
+# NOTE: we need more details that just the CPS "website" URL
+homepage_url: https://cmake.org/
+vcs_url: https://gitlab.kitware.com/cmake/cmake
+
+# CPS has also default_license
+license: BSD-3-Clause
+
+# these are needed to track other well known PURLs for the same code
+alternative_purls:
+    - pkg:github/Kitware/CMake
+    - pkg:gitlab/cmake/cmake?repository_url=https://gitlab.kitware.com/
+
+contact:
+    - type: person
+      name: Bill Hoffman
+      role: maintainer
+      email: bill@example.com
+ 

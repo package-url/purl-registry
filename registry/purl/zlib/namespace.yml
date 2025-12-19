@@ -1,0 +1,10 @@
+namespace: zlib
+description: this namespace is for zlib projects
+homepage_url: https://www.zlib.net/
+license: zlib
+contact:
+    - type: person
+      name: Mark Adler
+      role: maintainer
+      email: mark@example.com
+ 
