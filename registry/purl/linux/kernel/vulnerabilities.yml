@@ -1,0 +1,30 @@
+- purl: pkg:purl/linux/kernel@1.2
+  affected_by_vulnerabilities:
+    - CVE-1234-23435443
+  fixing_vulnerabilities: []
+
+- purl: pkg:purl/linux/kernel@2.0.5
+  affected_by_vulnerabilities:
+    - CVE-1234-23435443
+  fixing_vulnerabilities: []
+
+- purl: pkg:purl/linux/kernel@2.4.5
+  affected_by_vulnerabilities:
+    - CVE-1234-23435443
+  fixing_vulnerabilities: []
+
+- purl: pkg:purl/linux/kernel@2.6.0
+  affected_by_vulnerabilities: []
+  fixing_vulnerabilities:
+    - CVE-1234-23435443
+
+- purl: pkg:purl/linux/kernel@3.13.4
+  affected_by_vulnerabilities: []
+  fixing_vulnerabilities:
+    - CVE-1234-23435443
+    - CVE-1235-31131
+
+- purl: pkg:purl/linux/kernel@3.18.4
+  affected_by_vulnerabilities: []
+  fixing_vulnerabilities:
+    - CVE-2235-31131

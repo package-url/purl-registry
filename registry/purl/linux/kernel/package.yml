@@ -1,5 +1,6 @@
 namespace: linux
-description: this namespace is for all the kernel projects, including the linux kernel proper
+name: kernel
+description: The Linux kernel
 homepage_url: https://www.kernel.org/
 vcs_url: https://git.kernel.org/
 download_url: https://www.kernel.org/pub/
@@ -9,4 +10,7 @@ contact:
       name: Greg Kroah-Hartman
       role: maintainer
       email: greg@example.com
- 
+
+alternative_purls:
+    - pkg:github/torvalds/linux
+    - pkg:github/gregkh/linux
