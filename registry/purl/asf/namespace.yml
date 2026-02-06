@@ -1,0 +1,9 @@
+namespace: asf
+description: this namespace is for all the Apache Software Foundation (ASF) projects
+homepage_url: https://www.apache.org/purls
+license: Apache-2.0
+contact:
+    - type: person
+      name: Peter Carwash
+      role: maintainer
+      email: peter@exmaple.com
