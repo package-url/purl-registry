@@ -1,6 +1,4 @@
-================================
-       PURL registry
-================================
+# PURL registry
 
 This repository is a public, shared, open registry of Package-URLs for packages
 that do not live in a structured ecosystem and therefore may not have a PURL.
@@ -18,15 +16,15 @@ packages.
 This project bootstraps a solution to resolve this:
 
 - Use Package-URL (PURL) to create an open and distributed registry of C/C++
-  packages keyed by PURL, with associated metadata, but neutral towards any
-  build system.
+packages keyed by PURL, with associated metadata, but neutral towards any
+build system.
 
 - Promote and maintain open source tools to discover and detect C/C++ code
-  commonly vendored and patched in software codebases.
+commonly vendored and patched in software codebases.
 
-- Establish a database of known security vulnerabilities that affect these C/C++
-  packages, also keyed by these PURL. This becomes even more important with
-  CVE now supporting PURL since schema version 5.2.
+- Establish a database of known security vulnerabilities that affect these 
+C/C++ packages, also keyed by these PURL. This becomes even more important 
+with CVE now supporting PURL since schema version 5.2.
 
 The goal is to establish this registry as a community-maintained neutral place
 to enable distributed creation of unique PURLs with a simple process and
