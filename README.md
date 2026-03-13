@@ -40,4 +40,4 @@ compliance, using open data and open code.
 
 The roadmap is to lay the foundations and design the essential data
 formats, create the core code to collect and index C/C++ packages, and build 
-solid documentation to later foster and anchor a community.
+documentation to later foster and anchor a community.
