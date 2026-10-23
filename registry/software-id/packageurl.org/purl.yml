@@ -1,0 +1,12 @@
+namespace: packageurl.org
+description: This namespace is a shared domain for software-id PURLs.
+ The `packageurl.org` domain is a special domain to register PURLs for an
+ organization, community or person that does not have or does not want to
+ use their own domain **authority** for PURLs. It can also serve as an
+ aggregator for 'software-id' PURLs.
+homepage_url: https://packageurl.org/
+contact:
+    - type: person
+      name: Peter Carwash
+      role: maintainer
+      email: peter@example.com
