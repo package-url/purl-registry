@@ -1,0 +1,30 @@
+{
+  "$schema": "https://packageurl.org/purl-schemas/purl-type-definition.schema-1.1.json",
+  "$id": "https://packageurl.org/software-id/zlib.net-definition.json",
+  "type": "software-id",
+  "type_name": "Software ID",
+  "description": "Software-id for zlib.net packages",
+  "repository": {
+    "use_repository": false,
+  },
+  "namespace_definition": {
+    "requirement": "required",
+    "case_sensitive": true,
+    "note": "The namespace for zlib.net does not have extra segments."
+  },
+  "name_definition": {
+    "requirement": "required",
+    "case_sensitive": false,
+    "note": "The name is not case sensitive and shall be lowercased. The main name is 'zlib'."
+  },
+  "version_definition": {
+    "requirement": "optional",
+    "native_name": "version"
+  },
+  "examples": [
+    "pkg:software-id/zlib.net/zlib@1.3.2"
+  ],
+  "reference_urls": [
+    "https://zlib.net/"
+  ]
+}
