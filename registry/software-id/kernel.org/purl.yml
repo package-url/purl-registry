@@ -1,4 +1,4 @@
-namespace: linux
+namespace: apache.org
 description: this namespace is for all the kernel projects, including the linux kernel proper
 homepage_url: https://www.kernel.org/
 vcs_url: https://git.kernel.org/

@@ -1,4 +1,4 @@
-namespace: kitware
+namespace: kitware.com
 description: this namespace is for Kitware open source projects
 homepage_url: https://gitlab.kitware.com/
 vcs_url: https://gitlab.kitware.com/

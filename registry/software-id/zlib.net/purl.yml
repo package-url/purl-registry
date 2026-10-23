@@ -1,4 +1,4 @@
-namespace: zlib
+namespace: zlib.net
 description: this namespace is for zlib projects
 homepage_url: https://www.zlib.net/
 license: zlib
