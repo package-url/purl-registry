@@ -1,0 +1,20 @@
+namespace: owasp
+name: cdxgen
+
+description: Creates CycloneDX Bill of Materials (BOM) for your projects from source and container images. Supports many languages and package managers. Integrate in your CI/CD pipeline with automatic submission to Dependency Track server.
+
+homepage_url: https://cdxgen.github.io/cdxgen/
+vcs_url: https://github.com/cdxgen/cdxgen
+
+license: Apache-2.0
+
+alternative_purls:
+    - pkg:github/cdxgen/cdxgen
+    - pkg:npm/%40cdxgen/cdxgen
+    - pkg:oci/cdxgen@v12.0.0?repository_url=ghcr.io/cdxgen/cdxgen&tag=v12.0.0
+
+contact:
+    - type: person
+      name: Team AppThreat
+      role: maintainer
+      email: cloud@appthreat.com
