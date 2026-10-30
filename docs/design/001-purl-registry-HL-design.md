@@ -1,6 +1,6 @@
 ---
 status: proposed
-date: 2026-10-29
+date: 2026-10-30
 ---
 
 # Design for PURL registry
@@ -29,21 +29,21 @@ issues for the 'software-id' PURL `type`.
 The key unique feature of the 'software-id' PURL `type` is the definition
 of the `namespace` PURL component. This `namespace` definition has two key
 elements:
-- **Disambiguation through domain**: For 'software-id' PURLs the first segment
+- *Disambiguation through domain*: For 'software-id' PURLs the first segment
   of the `namespace` component is always an internet domain. Different
   software publishers will always be able to provide unique PURLs for their
   software packages using their domain.
-- **Flexible namespace segments**: The PURL `namespace` component supports
+- *Flexible namespace segments*: The PURL `namespace` component supports
    multiple slash-separated segments (with no specific limit) so that a
    software publisher who owns a domain used for 'software-id' PURLs can
    document deep software naming hierarchies as needed.
 
-See the **001-Register-software-id-PURL-type** decision document for more
-details.
+See the **001-Register-software-id-PURL-type** decision document (link above)
+for more details.
 
-### New PURL registry
+### PURL registries for the 'software-id' PURL type
 
-The purpose of implementing a PURL registry is to support the use of the new
+The purpose of implementing PURL registries is to support the use of the new
 'software-id' PURL `type` by providing a way for:
 - Software publishers to register their usage of 'software-id' PURLs
   to make it easier for software consumers to discover their PURL data.
@@ -70,99 +70,122 @@ The key high level requirements for the PURL registry are:
 This design document provide a proposed solution for implementing a
 multi-level PURL registry system to support the new 'software-id' PURL `type`.
 
-The proposed PURL registry solution has two primary levels:
+### Terminology
+This design uses the following terminology:
+- **Consumer** means means an organization (or person) that consumes
+  software using PURLs to identify software packages.
+- **Local PURL Registry** means a registry of software package PURLs that is
+  maintained by an organization (or possibly a person) that asserts ownership
+  and use of an internet domain as the first `namespace` segment for
+  'software-id' `type` PURLs.
+- **Package** means any software artefact. The most common synonym is
+  component.
+- **PURL Namespace Registry** means a registry of 'software-id' PURL
+  `namespaces` maintained by the Package-URL community to document
+  `namespaces` voluntarily registered by software Publishers.
+- **Publisher** means an organization (or person) that publishes
+  (or distributes) software using PURLs to identify software packages.
+- `./well-known/purl` means a [**well-known URI**](https://en.wikipedia.org/wiki/Well-known_URI)
+  that is required to be available at each Local PURL Registry. The
+  Package-URL community will register the `purl` URI with IANA after we
+  complete the design for the minimum data to be provided at this URI and
+  validate it with a reasonable number of implementations.
+
+This terminology is subject to change as the design evolves.
+
+The proposed PURL registry solution has three levels:
+
+### Local PURL Registries
+
+A Local PURL Registry is required to provide:
+- A `./well-known/purl` URI at the domain used for the first `namespace`
+  segment of the PURLs maintained by the publisher.
+- A public text file (catalog) listing the publisher's known PURLs with one
+  package listed per line (with a newline `\n` ending). This format should be
+  optimal for data streaming.
+
+The reason for this requirement is to enable the public to verify the
+validity of a 'software-id' PURL from this publisher. This is essential
+information for software identification using PURL. Software publishers are
+encouraged, but not required, to provide Package metadata or download
+information (or both) for its PURLs.
+
+It seems likely that many commercial publishers will limit access to
+package metadata or downloads to customers. It also seems likely that large
+organizations (commercial or open source) will implement their own internal
+mechanisms to make package metadata or downloads available to consumers.
 
 ### PURL Namespace Registry
 
-The central registry keeps track of all the orgs and prevents two real-world
-orgs using the same identifier. This is conceptually similar to the domain
-name system. First come, first served. We would need to record some contact
-information, website etc. (more below) for each org in order to be able to do
-housekeeping over the years. Also, some proof of association between contact
-person and org should be required. Otherwise, it works via GitHub PRs, no
-extra infrastructure needed.
+The PURL Namespace Registry is provided to allow a publisher to register its
+domain for a 'software-id' PURL `namespace`. This registry will by provided
+by the Package-URL community using a dedicated Git repository with:
+- Simple YAML or similar files to document:
+  - the domain to be registered for a 'software-id' `namespace`
+  - description
+  - homepage URL
+  - contact information for the registration
+- A simple issue & PR process to submit and approve registrations
+- Basic verification that the requestor is authorized to register the
+  `namespace` domain by the domain owner.
+- A simple process to update a registration
 
-exists only once, run by the PURL people)
+Registration is optional but strongly encouraged to avoid conflicts and to
+enable software consumers to quickly identify active Local PURL Registries.
+The registration process is intended to be similar to the process for
+registering internet domains.
 
-- Where do we track author/owner, contact and license information
-    ---> in GH as part of the registration process
-  - privacy concerns
-  - how often does the data change
-  - license complexity
+### Package-URL hosted registry
 
-Each domain acts as a PURL registry that enforces uniqueness. The shared
-packageurl.org registry enforces uniqueness within its domain during the
-registration process, where each registration is documented by files published
-at a `.well-known` URI.
+The Package-URL community will host a shared "local" PURL registry
+providing a free central registry for open source projects or other
+organizations that want to standardize their PURLs without using their own
+domain because they do not own a domain or they have one and prefer not to
+use it for this purpose.
 
-The shared packageurl.org domain serving a .well-known/purl URI of registered
-PURL namespaces and providing a centralized registry for open source projects
-or other organizations that want to standardize their PURLs without having to
-host their own .well-known/purl URI, either because they do not control a
-domain or they prefer centralized registration.
+PURLs from the Package-URL hosted registry will all start with
+`pkg:software-id/packageurl.org/` where 'software-id' is the PURL `type` and
+'packageurl.org' is the first `namespace` segment. The Package-URL community
+will define:
+- A PURL `type` subschema for:
+  - identifying each unique publisher within the `namespace` component, and
+  - optionally defining rules for the other PURL component data for a
+    publisher.
+- The data structure for the information to be stored at and served from its
+  `./well-known/purl` URI and offer this structure as a template for use by
+  other Local PURL Registries.
+- A Git-based process for registering each software publisher who wants to use
+  the Package-URL hosted registry. This process will be similar to the
+  registration process for Local PURL Registries.
 
-The packageurl.org domain will host the shared registry of PURLs prefixed with
- pkg:software-id/packageurl.org/ and also serve as an aggregator for other
- domains to make discovery easier with mirrored snapshots of their
- `./well-known/purl` PURL definitions and catalogs.
-
-The packageurl.org domain will support a simple process to register a
-'software-id' PURL `namespace`. The data in this PURL registry will be stored
-as JSON data files in a public git repository, and that data will be served
-directly from `packageurl.org/.well-known/purl`. The git repository is at
-https://github.com/package-url/purl-registry/
-
-
-### Local registries
-
-Some organizations produce a large number of components and therefore PURLs.
-The local registry helps them keep track, and make sure they've got at least
-the same metadata as the global registry, but for each of their local
-components. This is potentially an optional thing - maybe some orgs don't need
- it, and we should not require a local registry?
-
-From a PURL perspective, we don't need to do much here. Each org would be on
-their own to manage their internal components. Maybe we'll have an open-source
-container for self-hosting a little self-service web app with a database one
-day. Maybe it's just a Git repo like the global registry. It's the org's decision.
-
-Either way, the local registry must always produce an up-to-date text file
-listing all their components -  one component per line. This is provided via
-a download URL given in the global registry, so the public can verify the correctness of a PURL.
-
-- a local registry (exists once per org, run by the org)
-
-How much does the software-id type definition mandate the structure of data
-available at ./well-known/purl URI
-- At a minimum a list of valid PURLs?
-- Store as text with defined line editing / best for stream parsing
-- Internal redirects very likely inside commercial companies
-
-- Define software-id "subschema" (examples at purl-registry)
-
-### packageurl.org registry
-
-
+Other organizations will have the option to establish a Local PURL Registry
+to host multiple software publishers with the general template provided by the
+Package-URL community.
 
 ## Non-functional requirements
 
-- Persistent domain for the registry
-- Scalability and security for public access: Support high demand for data from
-  packageurl.org while avoiding abuse from APIs or agents. Will likely require
-  Cloudfare or another CDN.
-
+- Persistent domain for the PURL Namespace Registry
+- Scalability and security for public access: Support high demand for data
+  from `packageurl.org` while avoiding abuse from APIs or agents. This will
+  likely require Cloudflare or another CDN.
 
 ## Alternative solutions
 
 
 ## More Information
 
+### Out of scope
+- Provide an open-source container for self-hosting a lightweight self-service
+  web app with a database.
+- Aggregate mirrored snapshots of `./well-known/purl` PURL data from public
+  Local PURL Registries.
+
 ### ASF example
 An example of a 'software-id' PURL for Apache Software Foundation projects is:
 `pkg:software-id/apache.org/<asf-namespace>/<name>@<version>`
 
 Where:
-- The `namespace` domain is fixed to `apache.org`.
+- The `namespace` domain is fixed to `'apache.org'.
 - <asf-namespace> is an ASF-internal segment (most likely the PMC/TLP, e.g.
   logging, commons) which we can finalize within the ASF.
 - <name> and <version> follow the usual PURL semantics.
