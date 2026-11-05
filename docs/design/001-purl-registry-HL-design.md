@@ -57,7 +57,7 @@ The key high level requirements for the PURL registry are:
 - Neutral public registry
 - Federated approach with `packageurl.org` as the default registry
 - Simple process to register a 'software-id' `namespace` domain
-- A `.well-known/purl` URI contains the definitions and references for the
+- A `/.well-known/purl` URI contains the definitions and references for the
   PURLs defined at the corresponding domain
 - All data is keyed by PURL
 - Optional storage of package metadata
@@ -85,8 +85,8 @@ This design uses the following terminology:
   `namespaces` voluntarily registered by software Publishers.
 - **Publisher** means an organization (or person) that publishes
   (or distributes) software using PURLs to identify software packages.
-- `./well-known/purl` means a [**well-known URI**](https://en.wikipedia.org/wiki/Well-known_URI)
-  that is required to be available at each Local PURL Registry. The
+- `/.well-known/purl` means a [well-known URI](https://en.wikipedia.org/wiki/Well-known_URI)
+  that is required to be available in each Local PURL Registry. The
   Package-URL community will register the `purl` URI with IANA after we
   complete the design for the minimum data to be provided at this URI and
   validate it with a reasonable number of implementations.
@@ -98,7 +98,7 @@ The proposed PURL registry solution has three levels:
 ### Local PURL Registries
 
 A Local PURL Registry is required to provide:
-- A `./well-known/purl` URI at the domain used for the first `namespace`
+- A `/.well-known/purl` URI at the domain used for the first `namespace`
   segment of the PURLs maintained by the publisher.
 - A public text file (catalog) listing the publisher's known PURLs with one
   package listed per line (with a newline `\n` ending). This format should be
@@ -152,7 +152,7 @@ will define:
   - optionally defining rules for the other PURL component data for a
     publisher.
 - The data structure for the information to be stored at and served from its
-  `./well-known/purl` URI and offer this structure as a template for use by
+  `/.well-known/purl` URI and offer this structure as a template for use by
   other Local PURL Registries.
 - A Git-based process for registering each software publisher who wants to use
   the Package-URL hosted registry. This process will be similar to the
