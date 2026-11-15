@@ -1,6 +1,6 @@
 ---
 status: proposed
-date: 2026-10-30
+date: 2026-11-13
 ---
 
 # Design for PURL registry
